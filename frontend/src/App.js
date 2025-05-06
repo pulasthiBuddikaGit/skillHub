@@ -20,13 +20,13 @@ function App() {
                 <div className="body">
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path="/user" element={<User />} />
+                        <Route path="/user" element={<User />} />   {/*profile tab*/}
                         <Route path="/user/:userId" element={<UserPosts />} />
                         <Route path="/sharedposts" element={<SharedPosts />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<Register />} />
-                        <Route path="/profile" element={<Profile />} />
-                        <Route path="/workout" element={<Meals />} />
+                        <Route path="/profile" element={<Profile />} />  {/*update profile*/}
+                        {/* <Route path="/workout" element={<Meals />} /> */}
                     </Routes>
                 </div>
             </Router>
