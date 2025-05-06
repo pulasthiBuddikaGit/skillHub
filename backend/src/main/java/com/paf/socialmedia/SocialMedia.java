@@ -7,11 +7,16 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 @SpringBootApplication
 @EnableMongoRepositories
 public class SocialMedia {
 
 	public static void main(String[] args) {
+
+		Dotenv dotenv = Dotenv.load();
+        System.setProperty("MONGODB_URI", dotenv.get("MONGODB_URI"));
 		SpringApplication.run(SocialMedia.class, args);
 	}
 
