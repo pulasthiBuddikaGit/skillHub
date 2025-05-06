@@ -8,7 +8,7 @@ spring:
   data:
     mongodb:
       # uri: mongodb+srv://hello:1234@assingmentpaf.njxkken.mongodb.net/AssingmentPAF?retryWrites=true&w=majority
-      uri: mongodb+srv://pulaDbUser:mongoDb%40123@cluster0.qwzjgsf.mongodb.net/skillSharingDB?retryWrites=true&w=majority&appName=Cluster0
+      uri: ${MONGODB_URI}
 server:
   port: 8082
 
