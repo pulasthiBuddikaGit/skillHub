@@ -127,6 +127,7 @@ function Navbar() {
           </div>
         </div>
       </nav>
+
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -136,6 +137,7 @@ function Navbar() {
           <Profile closeModal={closeModal} />
         </div>
       </Modal>
+      
     </div>
   );
 }
