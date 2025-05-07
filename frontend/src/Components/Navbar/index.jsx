@@ -11,6 +11,7 @@ import LogoImage from "../../assets/modern-camera-broken-logotype.png";
 
 Modal.setAppElement("div");
 
+
 function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -42,7 +43,8 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light p-3">
+      <nav className={`navbar navbar-expand-lg p-3 ${user.loginStatus ? "navbar-dark" : "navbar-light bg-light"}`} 
+        style={user.loginStatus ? {background: "linear-gradient(to right,rgb(221, 226, 231),rgb(39, 61, 112))"} : {}}>
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             <img
@@ -132,6 +134,7 @@ function Navbar() {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Profile Modal"
+        style={customModalStyles}
       >
         <div className="p-2">
           <Profile closeModal={closeModal} />
@@ -141,5 +144,25 @@ function Navbar() {
     </div>
   );
 }
+
+// Custom modal styles to fix white background issue
+const customModalStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    padding: '0',
+    border: 'none',
+    borderRadius: '8px',
+    boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
+    backgroundColor: 'transparent'
+  },
+  overlay: {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+  }
+};
 
 export default Navbar;
