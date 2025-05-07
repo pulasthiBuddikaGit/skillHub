@@ -82,7 +82,7 @@ function Profile(props) {
 
   return (
     // Background image come from google
-    <div style={{ backgroundImage: `url('https://wallpaperset.com/w/full/a/3/d/45475.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: "10px", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)" }}> 
+    <div style={{ backgroundImage: `url('https://i.imgur.com/tYBQuYB.jpeg')`, backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: "10px", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)" }}> 
       
       <h1 className="text-center" style={{ fontFamily:"cursive", color:"white"}}>Update Profile</h1>
       <hr style={{color:"white"}}/>
