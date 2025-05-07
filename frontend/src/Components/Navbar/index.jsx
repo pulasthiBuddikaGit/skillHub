@@ -7,7 +7,7 @@ import { logout } from "../../app/slices/user.slice";
 import Profile from "../../Pages/Profile";
 import NotificationDropdown from "../NotificationDropdown";
 import UserImage from "../../assets/user.jpeg";
-import LogoImage from "../../assets/logo.png";
+import LogoImage from "../../assets/modern-camera-broken-logotype.png";
 
 Modal.setAppElement("div");
 
@@ -49,7 +49,7 @@ function Navbar() {
               src={LogoImage}
               className="tastebuds logo"
               alt=" "
-              height="40px"
+              height="55px"
               width="auto"
             />
           </Link>
@@ -81,9 +81,9 @@ function Navbar() {
                 {/* <Link className="nav-link me-3" to="/meals">
                   Meals
                 </Link> */}
-                {/* <Link className="nav-link me-3" to="/workout">
-                  Workout
-                </Link> */}
+                <Link className="nav-link me-3" to="/workout">
+                  Progress Posts
+                </Link>
                 <NotificationDropdown />
                 <button
                   className="btn btn-outline-danger me-3"
