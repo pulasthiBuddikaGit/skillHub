@@ -111,9 +111,10 @@ function Navbar() {
                   />
                   <span className="fw-bold">{user?.user?.username}</span>
                 </Link>
-                
+
               </div>
             ) : (
+              //if user is not logged in
               <div>
                 <Link to="/login" className="btn btn-primary me-3">
                   Login
