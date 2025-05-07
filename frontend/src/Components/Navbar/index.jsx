@@ -43,10 +43,11 @@ function Navbar() {
 
   return (
     <div>
-      <nav className={`navbar navbar-expand-lg p-3 `}> 
-        
+      <nav className={`navbar navbar-expand-lg p-3 ${user.loginStatus ? "navbar-dark" : "navbar-light bg-light"}`} 
+        style={user.loginStatus ? {background: "linear-gradient(to right,rgb(221, 226, 231),rgb(39, 61, 112))"} : {}}
+      >
         <div className="container-fluid">
-          {/* <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand" to="/">
             <img
               src={LogoImage}
               className="tastebuds logo"
@@ -54,8 +55,8 @@ function Navbar() {
               height="55px"
               width="auto"
             />
-          </Link> */}
-          {/* <button
+          </Link>
+          <button
             className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
@@ -65,7 +66,7 @@ function Navbar() {
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
-          </button> */}
+          </button>
 
           
           
