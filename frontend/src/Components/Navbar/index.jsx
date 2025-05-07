@@ -93,6 +93,7 @@ function Navbar() {
                 >
                   Logout
                 </button>
+
                 <Link
                   onClick={() => {
                     openModal();
@@ -110,6 +111,7 @@ function Navbar() {
                   />
                   <span className="fw-bold">{user?.user?.username}</span>
                 </Link>
+                
               </div>
             ) : (
               <div>
