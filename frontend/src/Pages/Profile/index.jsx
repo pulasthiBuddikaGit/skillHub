@@ -153,6 +153,7 @@ function Profile(props) {
                   }}
                 />
               </div>
+
               <div className="mb-3">
                 {profileImage && (
                   <img
@@ -164,6 +165,7 @@ function Profile(props) {
                 <label style={{color:"white"}} htmlFor="country" className="form-label">
                   Profile Image
                 </label>
+                
                 <input
                   type="file"
                   className="form-control"
@@ -176,6 +178,7 @@ function Profile(props) {
                 <button className="btn btn-danger w-100 mb-3" onClick={()=>{
                   setProfileImage("https://i.discogs.com/57iTb7iRduipsfyksYodpaSpz_eEjtg52zPBhCwBPhI/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTY5Nzg2/ODEtMTU0OTgxMTIz/OC02NjMxLmpwZWc.jpeg")}}>Remove Profile picture</button>
               </div>
+
               <button
                 className="btn btn-outline-primary w-100 mb-3"
                 onClick={() => {
