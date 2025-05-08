@@ -12,40 +12,39 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/progress/comments")
 public class ProgressCommentController {
     @Autowired
-    private ProgressCommentService workoutCommentService;
+    private ProgressCommentService progressCommentService;
 
     //Get data from id
     @GetMapping("/{id}")
-    public ResponseEntity<?> getWorkoutCommentById(@PathVariable String id){
-        return workoutCommentService.getWorkoutCommentById(id);
+    public ResponseEntity<?> getProgressCommentById(@PathVariable String id){
+        return progressCommentService.getProgressCommentById(id);
     }
     
     //Get data from id
     @GetMapping
-    public ResponseEntity<?> getWorkoutComments(){
-        return workoutCommentService.getWorkoutComments();
+    public ResponseEntity<?> getProgressComments(){
+        return progressCommentService.getProgressComments();
     }
 
     //Get data from id
     @GetMapping("/progress/{id}")
-    public ResponseEntity<?> getWorkoutCommentsByWorkout(@PathVariable String id){
-        return workoutCommentService.getWorkoutCommentsByWorkout(id);
+    public ResponseEntity<?> getProgressCommentsByProgress(@PathVariable String id){
+        return progressCommentService.getProgressCommentsByProgress(id);
     }
 
     //Get data from id
     @PostMapping
-    public ResponseEntity<?> saveWorkoutComment(@RequestBody ProgressComment workoutComment){
-        return workoutCommentService.saveWorkoutComment(workoutComment);
+    public ResponseEntity<?> saveProgressComment(@RequestBody ProgressComment progressComment){
+        return progressCommentService.saveProgressComment(progressComment);
     }
+    
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateWorkoutCommentById(@PathVariable String id, @RequestBody ProgressComment workoutComment){
-        return  workoutCommentService.updateWorkoutCommentById(id,workoutComment);
+    public ResponseEntity<?> updateProgressCommentById(@PathVariable String id, @RequestBody ProgressComment progressComment){
+        return  progressCommentService.updateProgressCommentById(id,progressComment);
     }
 
-    
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteWorkoutCommentById(@PathVariable String id){
-        return workoutCommentService.deleteWorkoutCommentById(id);
+    public ResponseEntity<?> deleteProgressCommentById(@PathVariable String id){
+        return progressCommentService.deleteProgressCommentById(id);
     }
 }
-
