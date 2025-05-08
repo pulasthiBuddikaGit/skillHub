@@ -66,7 +66,7 @@ function PostAdd() {
     <div className="container mb-3 card create">
       <div className="card-body">
         <form onSubmit={handleSubmit}>
-          <h1 className="mt-2">Share your Workouts</h1>
+          <h1 className="mt-2">Share what you learned</h1>
           <div className="mt-2 mb-3">
             <label className="form-label"></label>
             <textarea
