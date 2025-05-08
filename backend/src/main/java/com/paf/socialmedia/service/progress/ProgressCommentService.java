@@ -1,7 +1,7 @@
 package com.paf.socialmedia.service.progress;
 
 import com.paf.socialmedia.document.progress.ProgressComment;
-import com.paf.socialmedia.repository.progress.WorkoutCommentRepository;
+import com.paf.socialmedia.repository.progress.ProgressCommentRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +16,7 @@ import java.util.Optional;
 @Service
 public class ProgressCommentService {
     @Autowired
-    private WorkoutCommentRepository workoutCommentRepository;
+    private ProgressCommentRepository workoutCommentRepository;
 
     public ResponseEntity<?> getWorkoutCommentById(String id){
         Optional<ProgressComment> workoutComment =  workoutCommentRepository.findById(id);
