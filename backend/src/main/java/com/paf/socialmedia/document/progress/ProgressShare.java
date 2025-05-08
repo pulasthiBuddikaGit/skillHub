@@ -12,7 +12,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "workout_share")
+@Document(collection = "progress_share")
 public class ProgressShare {
     @Id
     private String id;
