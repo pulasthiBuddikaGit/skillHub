@@ -10,7 +10,7 @@ public class ProgressShareDTO {
     private String userId;
     private String username;
     private String profileImage;
-    private ProgressDTO workout;
+    private ProgressDTO progress;
     private Date createdAt;
     private Date updatedAt;
 }
