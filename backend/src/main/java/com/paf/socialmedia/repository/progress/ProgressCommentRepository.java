@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface ProgressCommentRepository extends MongoRepository<ProgressComment, String> {
-    List<ProgressComment> findByWorkoutId(String workoutId);
+    List<ProgressComment> findByProgressId(String progressId);
 
 }
