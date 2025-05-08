@@ -34,7 +34,7 @@ public class ProgressShareService {
         if(workout.isPresent()){
             return new ResponseEntity<>(workout.get(), HttpStatus.OK);
         }else{
-            return new ResponseEntity<>("No Workout Found", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("No Progress Found", HttpStatus.NOT_FOUND);
         }
     }
 
@@ -111,7 +111,7 @@ public class ProgressShareService {
             updateWorkout.setUpdatedAt(new Date(System.currentTimeMillis()));
             return new ResponseEntity<>(workoutShareRepository.save(updateWorkout), HttpStatus.OK);
         }else{
-            return new ResponseEntity<>("Shared Workout Update Error",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Shared Progress Update Error",HttpStatus.NOT_FOUND);
         }
     }
 
