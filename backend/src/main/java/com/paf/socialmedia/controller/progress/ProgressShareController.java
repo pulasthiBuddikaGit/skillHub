@@ -14,31 +14,35 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/progressshare")
 public class ProgressShareController {
     @Autowired
-    private ProgressShareService workoutShareService;
+    private ProgressShareService progressShareService;
 
     @PostMapping
-    public ResponseEntity<?> saveWorkout(@RequestBody ProgressShare workoutShare){
-        return workoutShareService.saveWorkout(workoutShare);
+    public ResponseEntity<?> saveProgress(@RequestBody ProgressShare progressShare){
+        return progressShareService.saveProgress(progressShare);
     }
+
     @GetMapping
-    public ResponseEntity<?> getWorkouts(){
-        return workoutShareService.getWorkouts();
+    public ResponseEntity<?> getProgresses(){
+        return progressShareService.getProgresses();
     }
+
     @GetMapping("/user/{id}")
-    public ResponseEntity<?> getsharedWorkoutsByUserId(@PathVariable String id){
-        return workoutShareService.getsharedWorkoutsByUserId(id);
+    public ResponseEntity<?> getsharedProgressesByUserId(@PathVariable String id){
+        return progressShareService.getsharedProgressesByUserId(id);
     }
+
     @GetMapping("/{id}")
-    public ResponseEntity<?> getWorkoutById(@PathVariable String id){
-        return workoutShareService.getWorkoutById(id);
+    public ResponseEntity<?> getProgressById(@PathVariable String id){
+        return progressShareService.getProgressById(id);
     }
+
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateWorkoutById(@PathVariable String id, @RequestBody ProgressShare workoutShare){
-        return  workoutShareService.updateWorkoutById(id,workoutShare);
+    public ResponseEntity<?> updateProgressById(@PathVariable String id, @RequestBody ProgressShare progressShare){
+        return  progressShareService.updateProgressById(id, progressShare);
     }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteWorkoutById(@PathVariable String id){
-        return workoutShareService.deleteWorkoutById(id);
+    public ResponseEntity<?> deleteProgressById(@PathVariable String id){
+        return progressShareService.deleteProgressById(id);
     }
 }
-

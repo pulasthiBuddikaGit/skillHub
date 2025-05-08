@@ -13,35 +13,40 @@ import org.springframework.web.bind.annotation.*;
 public class ProgressController {
 
     @Autowired
-    private ProgressService workoutService;
+    private ProgressService progressService;
 
     @PostMapping
-    public ResponseEntity<?> saveWorkout(@RequestBody Progress workout){
-        return workoutService.saveWorkout(workout);
+    public ResponseEntity<?> saveProgress(@RequestBody Progress progress){
+        return progressService.saveProgress(progress);
     }
+
     @GetMapping
-    public ResponseEntity<?> getWorkouts(){
-        return workoutService.getWorkouts();
+    public ResponseEntity<?> getProgresses(){
+        return progressService.getProgresses();
     }
+
     @GetMapping("/user/{id}")
-    public ResponseEntity<?> getWorkoutsByUserId(@PathVariable String id){
-        return workoutService.getWorkoutsByUserId(id);
+    public ResponseEntity<?> getProgressesByUserId(@PathVariable String id){
+        return progressService.getProgressesByUserId(id);
     }
+
     @GetMapping("/{id}")
-    public ResponseEntity<?> getWorkoutById(@PathVariable String id){
-        return workoutService.getWorkoutById(id);
+    public ResponseEntity<?> getProgressById(@PathVariable String id){
+        return progressService.getProgressById(id);
     }
+
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateWorkoutById(@PathVariable String id, @RequestBody Progress workout){
-        return  workoutService.updateWorkoutById(id,workout);
+    public ResponseEntity<?> updateProgressById(@PathVariable String id, @RequestBody Progress progress){
+        return progressService.updateProgressById(id, progress);
     }
+
     @PutMapping("/like/{id}")
-    public ResponseEntity<?> likeWorkoutById(@PathVariable String id, @RequestBody Progress workout){
-        return  workoutService.likeWorkoutById(id,workout);
+    public ResponseEntity<?> likeProgressById(@PathVariable String id, @RequestBody Progress progress){
+        return progressService.likeProgressById(id, progress);
     }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteWorkoutById(@PathVariable String id){
-        return workoutService.deleteWorkoutById(id);
+    public ResponseEntity<?> deleteProgressById(@PathVariable String id){
+        return progressService.deleteProgressById(id);
     }
 }
-

@@ -17,5 +17,5 @@ public class ProgressDTO {
     private Date createdAt;
     private Date updatedAt;
     private List<String> likedby;
-    private List<ProgressCommentDTO> workoutComments;
+    private List<ProgressCommentDTO> progressComments;
 }

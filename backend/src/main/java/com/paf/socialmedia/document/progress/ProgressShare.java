@@ -19,7 +19,7 @@ public class ProgressShare {
     private String caption;
     private String userId;
     @DBRef
-    private Progress workout;
+    private Progress progress;
     private Date createdAt;
     private Date updatedAt;
 }

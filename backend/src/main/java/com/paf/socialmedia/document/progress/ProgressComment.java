@@ -17,7 +17,7 @@ public class ProgressComment {
     private String id;
     private String text;
     private String userId;
-    private String workoutId;
+    private String progressId;
     private Date createdAt;
     private Date updatedAt;
 }

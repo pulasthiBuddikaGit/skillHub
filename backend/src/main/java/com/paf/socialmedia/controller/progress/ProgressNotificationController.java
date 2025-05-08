@@ -12,31 +12,35 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/progress/notifications")
 public class ProgressNotificationController {
     @Autowired
-    private ProgressNotificationService workoutNotificationService;
+    private ProgressNotificationService progressNotificationService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getWorkoutNotificationById(@PathVariable String id){
-        return workoutNotificationService.getWorkoutNotificationById(id);
+    public ResponseEntity<?> getProgressNotificationById(@PathVariable String id){
+        return progressNotificationService.getProgressNotificationById(id);
     }
+
     @GetMapping
     public ResponseEntity<?> getNotifications(){
-        return workoutNotificationService.getWorkoutNotifications();
+        return progressNotificationService.getProgressNotifications();
     }
+
     @GetMapping("/user/{id}")
     public ResponseEntity<?> getUnreadNotificationsByUserId(@PathVariable String id){
-        return workoutNotificationService.getUnreadWorkoutNotificationsByUserId(id);
+        return progressNotificationService.getUnreadProgressNotificationsByUserId(id);
     }
+
     @PostMapping
-    public ResponseEntity<?> saveNotification(@RequestBody ProgressNotification workoutNotification){
-        return workoutNotificationService.saveWorkoutNotification(workoutNotification);
+    public ResponseEntity<?> saveNotification(@RequestBody ProgressNotification progressNotification){
+        return progressNotificationService.saveProgressNotification(progressNotification);
     }
+
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateNotificationById(@PathVariable String id, @RequestBody ProgressNotification workoutNotification){
-        return  workoutNotificationService.updateWorkoutNotificationById(id,workoutNotification);
+    public ResponseEntity<?> updateNotificationById(@PathVariable String id, @RequestBody ProgressNotification progressNotification){
+        return  progressNotificationService.updateProgressNotificationById(id, progressNotification);
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteNotificationById(@PathVariable String id){
-        return workoutNotificationService.deleteWorkoutNotificationById(id);
+        return progressNotificationService.deleteProgressNotificationById(id);
     }
 }
-

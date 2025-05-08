@@ -11,7 +11,7 @@ public class ProgressCommentDTO {
     private String userId;
     private String username;
     private String profileImage;
-    private String workoutId;
+    private String progressId;
     private Date createdAt;
     private Date updatedAt;
 }
