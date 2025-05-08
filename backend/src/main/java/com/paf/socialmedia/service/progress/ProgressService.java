@@ -35,7 +35,7 @@ public class ProgressService {
         if(workout.isPresent()){
             return new ResponseEntity<>(workout.get(), HttpStatus.OK);
         }else{
-            return new ResponseEntity<>("No Workout Found",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("No Progress Found",HttpStatus.NOT_FOUND);
         }
     }
     public ResponseEntity<?> getWorkouts(){
@@ -170,7 +170,7 @@ public class ProgressService {
             updateWorkout.setUpdatedAt(new Date(System.currentTimeMillis()));
             return new ResponseEntity<>(workoutRepository.save(updateWorkout), HttpStatus.OK);
         }else{
-            return new ResponseEntity<>("Workout Update Error",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Progress Update Error",HttpStatus.NOT_FOUND);
         }
     }
     public ResponseEntity<?> likeWorkoutById(String id,Progress workout){
@@ -182,7 +182,7 @@ public class ProgressService {
             }
             return new ResponseEntity<>(workoutRepository.save(updateWorkout), HttpStatus.OK);
         }else{
-            return new ResponseEntity<>("Workout Update Error",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Progress Update Error",HttpStatus.NOT_FOUND);
         }
     }
     public ResponseEntity<?> deleteWorkoutById(String id){
