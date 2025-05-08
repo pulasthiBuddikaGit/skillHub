@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/workout/notifications")
+@RequestMapping("/api/progress/notifications")
 public class ProgressNotificationController {
     @Autowired
     private ProgressNotificationService workoutNotificationService;
