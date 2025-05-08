@@ -6,8 +6,8 @@ import com.paf.socialmedia.document.progress.ProgressShare;
 import com.paf.socialmedia.dto.progress.ProgressDTO;
 import com.paf.socialmedia.dto.progress.ProgressShareDTO;
 import com.paf.socialmedia.repository.UserRepository;
-import com.paf.socialmedia.repository.progress.WorkoutRepository;
-import com.paf.socialmedia.repository.progress.WorkoutShareRepository;
+import com.paf.socialmedia.repository.progress.ProgressRepository;
+import com.paf.socialmedia.repository.progress.ProgressShareRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,12 +23,12 @@ import java.util.Optional;
 public class ProgressShareService {
 
     @Autowired
-    private WorkoutShareRepository workoutShareRepository;
+    private ProgressShareRepository workoutShareRepository;
 
     @Autowired
     private UserRepository userRepository;
     @Autowired
-    private WorkoutRepository workoutRepository;
+    private ProgressRepository workoutRepository;
     public ResponseEntity<?> getWorkoutById(String id){
         Optional<ProgressShare> workout =  workoutShareRepository.findById(id);
         if(workout.isPresent()){

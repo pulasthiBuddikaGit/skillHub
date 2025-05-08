@@ -1,7 +1,7 @@
 package com.paf.socialmedia.service.progress;
 
 import com.paf.socialmedia.document.progress.ProgressNotification;
-import com.paf.socialmedia.repository.progress.WorkoutNotificationRepository;
+import com.paf.socialmedia.repository.progress.ProgressNotificationRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +15,7 @@ import java.util.Optional;
 @Service
 public class ProgressNotificationService {
     @Autowired
-    private WorkoutNotificationRepository workoutNotificationRepository;
+    private ProgressNotificationRepository workoutNotificationRepository;
 
     public ResponseEntity<?> getWorkoutNotificationById(String id){
         Optional<ProgressNotification> workoutNotification =  workoutNotificationRepository.findById(id);

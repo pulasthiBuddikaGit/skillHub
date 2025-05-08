@@ -8,6 +8,6 @@ import com.paf.socialmedia.document.progress.ProgressNotification;
 import java.util.List;
 
 @Repository
-public interface WorkoutNotificationRepository extends MongoRepository<ProgressNotification, String> {
+public interface ProgressNotificationRepository extends MongoRepository<ProgressNotification, String> {
     List<ProgressNotification> findByUserIdAndIsReadFalse(String userId);
 }

@@ -6,8 +6,8 @@ import com.paf.socialmedia.document.progress.ProgressComment;
 import com.paf.socialmedia.dto.progress.ProgressCommentDTO;
 import com.paf.socialmedia.dto.progress.ProgressDTO;
 import com.paf.socialmedia.repository.UserRepository;
-import com.paf.socialmedia.repository.progress.WorkoutCommentRepository;
-import com.paf.socialmedia.repository.progress.WorkoutRepository;
+import com.paf.socialmedia.repository.progress.ProgressCommentRepository;
+import com.paf.socialmedia.repository.progress.ProgressRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,10 +22,10 @@ import java.util.Optional;
 @Service
 public class ProgressService {
     @Autowired
-    private WorkoutRepository workoutRepository;
+    private ProgressRepository workoutRepository;
 
     @Autowired
-    private WorkoutCommentRepository workoutCommentRepository;
+    private ProgressCommentRepository workoutCommentRepository;
 
     @Autowired
     private UserRepository userRepository;

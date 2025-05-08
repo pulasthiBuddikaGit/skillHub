@@ -8,7 +8,7 @@ import com.paf.socialmedia.document.progress.ProgressComment;
 import java.util.List;
 
 @Repository
-public interface WorkoutCommentRepository extends MongoRepository<ProgressComment, String> {
+public interface ProgressCommentRepository extends MongoRepository<ProgressComment, String> {
     List<ProgressComment> findByWorkoutId(String workoutId);
 
 }

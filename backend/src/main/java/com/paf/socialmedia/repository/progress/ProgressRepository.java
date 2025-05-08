@@ -8,6 +8,6 @@ import com.paf.socialmedia.document.progress.Progress;
 import java.util.List;
 
 @Repository
-public interface WorkoutRepository extends MongoRepository<Progress,String> {
+public interface ProgressRepository extends MongoRepository<Progress,String> {
     List<Progress> findByUserId(String userId);
 }

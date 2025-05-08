@@ -6,6 +6,6 @@ import com.paf.socialmedia.document.progress.ProgressShare;
 
 import java.util.List;
 
-public interface WorkoutShareRepository extends MongoRepository<ProgressShare, String> {
+public interface ProgressShareRepository extends MongoRepository<ProgressShare, String> {
     List<ProgressShare> findByUserId(String userId);
 }

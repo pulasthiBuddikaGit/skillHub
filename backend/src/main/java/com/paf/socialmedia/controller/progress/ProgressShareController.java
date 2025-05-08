@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api/workoutshare")
-public class WorkoutShareController {
+public class ProgressShareController {
     @Autowired
     private ProgressShareService workoutShareService;
 
