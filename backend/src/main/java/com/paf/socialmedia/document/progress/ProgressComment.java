@@ -11,7 +11,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "workout_comments")
+@Document(collection = "progress_comments")
 public class ProgressComment {
     @Id
     private String id;
