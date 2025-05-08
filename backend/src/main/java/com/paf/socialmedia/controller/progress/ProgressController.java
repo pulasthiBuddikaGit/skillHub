@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/workouts")
+@RequestMapping("/api/progress")
 public class ProgressController {
 
     @Autowired

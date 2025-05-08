@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "workout")
+@Document(collection = "progress")
 public class Progress {
     @Id
     private String id;
