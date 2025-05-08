@@ -16,63 +16,64 @@ import java.util.Optional;
 @Service
 public class ProgressCommentService {
     @Autowired
-    private ProgressCommentRepository workoutCommentRepository;
+    private ProgressCommentRepository progressCommentRepository;
 
-    public ResponseEntity<?> getWorkoutCommentById(String id){
-        Optional<ProgressComment> workoutComment =  workoutCommentRepository.findById(id);
-        if(workoutComment.isPresent()){
-            return new ResponseEntity<>(workoutComment.get(), HttpStatus.OK);
+    public ResponseEntity<?> getProgressCommentById(String id){
+        Optional<ProgressComment> progressComment =  progressCommentRepository.findById(id);
+        if(progressComment.isPresent()){
+            return new ResponseEntity<>(progressComment.get(), HttpStatus.OK);
         }else{
             return new ResponseEntity<>("No Comment Found",HttpStatus.NOT_FOUND);
         }
     }
-    public ResponseEntity<?> getWorkoutComments(){
-        List<ProgressComment> workoutComment = workoutCommentRepository.findAll();
-        if(workoutComment.size() > 0){
-            return new ResponseEntity<List<ProgressComment>>(workoutComment, HttpStatus.OK);
+
+    public ResponseEntity<?> getProgressComments(){
+        List<ProgressComment> progressComment = progressCommentRepository.findAll();
+        if(progressComment.size() > 0){
+            return new ResponseEntity<List<ProgressComment>>(progressComment, HttpStatus.OK);
         }else {
             return new ResponseEntity<List<ProgressComment>>(new ArrayList<>(),HttpStatus.OK);
         }
     }
 
-    public ResponseEntity<?> getWorkoutCommentsByWorkout(String postId){
-        List<ProgressComment> workoutComment = workoutCommentRepository.findByWorkoutId(postId);
-        if(workoutComment.size() > 0){
-            return new ResponseEntity<List<ProgressComment>>(workoutComment, HttpStatus.OK);
+    public ResponseEntity<?> getProgressCommentsByProgress(String postId){
+        List<ProgressComment> progressComment = progressCommentRepository.findByProgressId(postId);
+        if(progressComment.size() > 0){
+            return new ResponseEntity<List<ProgressComment>>(progressComment, HttpStatus.OK);
         }else {
             return new ResponseEntity<List<ProgressComment>>(new ArrayList<>(),HttpStatus.OK);
         }
     }
 
-    public ResponseEntity<?> saveWorkoutComment(ProgressComment workoutComment){
+    public ResponseEntity<?> saveProgressComment(ProgressComment progressComment){
         try{
-            workoutComment.setCreatedAt(new Date(System.currentTimeMillis()));
-            workoutComment.setUpdatedAt(new Date(System.currentTimeMillis()));
-            workoutCommentRepository.save(workoutComment);
-            return new ResponseEntity<ProgressComment>(workoutComment, HttpStatus.OK);
+            progressComment.setCreatedAt(new Date(System.currentTimeMillis()));
+            progressComment.setUpdatedAt(new Date(System.currentTimeMillis()));
+            progressCommentRepository.save(progressComment);
+            return new ResponseEntity<ProgressComment>(progressComment, HttpStatus.OK);
         }catch(Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    public ResponseEntity<?> updateWorkoutCommentById(String id,ProgressComment workoutComment){
-        Optional<ProgressComment> existingComment =  workoutCommentRepository.findById(id);
+    public ResponseEntity<?> updateProgressCommentById(String id, ProgressComment progressComment){
+        Optional<ProgressComment> existingComment =  progressCommentRepository.findById(id);
         if(existingComment.isPresent()){
             ProgressComment updateComment = existingComment.get();
-            updateComment.setText(workoutComment.getText());
+            updateComment.setText(progressComment.getText());
             updateComment.setUpdatedAt(new Date(System.currentTimeMillis()));
-            return new ResponseEntity<>(workoutCommentRepository.save(updateComment), HttpStatus.OK);
+            return new ResponseEntity<>(progressCommentRepository.save(updateComment), HttpStatus.OK);
         }else{
             return new ResponseEntity<>("Comment Update Error",HttpStatus.NOT_FOUND);
         }
     }
-    public ResponseEntity<?> deleteWorkoutCommentById(String id){
+
+    public ResponseEntity<?> deleteProgressCommentById(String id){
         try{
-            workoutCommentRepository.deleteById(id);
+            progressCommentRepository.deleteById(id);
             return new ResponseEntity<>("Success deleted with " + id,HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
         }
     }
 }
-
