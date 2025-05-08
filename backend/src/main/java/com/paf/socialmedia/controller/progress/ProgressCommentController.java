@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/workout/comments")
+@RequestMapping("/api/progress/comments")
 public class ProgressCommentController {
     @Autowired
     private ProgressCommentService workoutCommentService;
@@ -27,7 +27,7 @@ public class ProgressCommentController {
     }
 
     //Get data from id
-    @GetMapping("/workout/{id}")
+    @GetMapping("/progress/{id}")
     public ResponseEntity<?> getWorkoutCommentsByWorkout(@PathVariable String id){
         return workoutCommentService.getWorkoutCommentsByWorkout(id);
     }
