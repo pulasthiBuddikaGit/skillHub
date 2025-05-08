@@ -11,7 +11,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "workout_notifications")
+@Document(collection = "progress_notifications")
 public class ProgressNotification {
     @Id
     private String id;
