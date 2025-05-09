@@ -33,7 +33,7 @@ function SharedPostCard({ post, fetchType }) {
 
   return (
     // shared post
-    <div className="container p-2 card mb-4 post-card">
+    <div className="container p-2 card mb-4 post-card" style={{backgroundColor: "#f9f9fb",}}>
       <div className="card-body">
         <div className="row">
           <div className="col-10">
