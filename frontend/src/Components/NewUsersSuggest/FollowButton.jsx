@@ -8,6 +8,8 @@ function FollowButton({ userDetails, fetchType }) {
   const user = useSelector((state) => state.user);
   const [followed, setFollowed] = useState(false);
 
+
+
   useEffect(() => {
     if (userDetails?.followedBy && userDetails.followedBy?.length) {
       const userIdIndex = userDetails.followedBy.indexOf(user.userId);
@@ -56,16 +58,31 @@ function FollowButton({ userDetails, fetchType }) {
   return (
     <>
       {followed ? (
-        <button
-          className="btn-follow btn-sm"
-          onClick={handleOnFollow}
-        >
+        <button className="btn-follow btn-sm" onClick={handleOnFollow}>
           Unfollow
         </button>
       ) : (
         <button
           className="btn-follow btn-sm"
           onClick={handleOnFollow}
+          style={{
+            color: "#33407e",
+            border: "1px solid #33407e",
+            borderRadius: "5px",
+            cursor: "pointer",
+            backgroundColor: "transparent",
+            padding: "6px 12px",
+            fontWeight: "600",
+            transition: "all 0.2s ease-in-out",
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.backgroundColor = "#33407e";
+            e.target.style.color = "#fff";
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.backgroundColor = "transparent";
+            e.target.style.color = "#33407e";
+          }}
         >
           Follow
         </button>

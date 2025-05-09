@@ -15,7 +15,7 @@ function SharedPosts() {
     }
   }, [dispatch, user.userId]);
   return (
-    <div>
+    <div style={{ maxWidth: "600px", width: "100%", marginTop: "1.5rem", backgroundColor: "#f9f9fb", borderRadius: "15px" }}>
         <SharedPostsList posts={post.posts} fetchType="GET_ALL_POSTS_SHARED"/>
     </div>
   );
