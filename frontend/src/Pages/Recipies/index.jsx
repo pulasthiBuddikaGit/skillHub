@@ -52,7 +52,7 @@ function Recipies() {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100); //rounding
+        Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
       },
       (err) => console.log(err), // error
       () => {
