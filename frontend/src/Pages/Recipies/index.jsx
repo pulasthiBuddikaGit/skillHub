@@ -35,8 +35,7 @@ function Recipies() {
   const uploadImage = (e) => {
     const files = e.target.files;
 
-    if (files.length === 0)
-      alert("Please upload at least one image!");
+    if (files.length === 0) alert("Please upload at least one image!");
     return;
   };
 
@@ -109,11 +108,7 @@ function Recipies() {
 
             <div className="mb-3">
               {imgLink && (
-                <img
-                  src={imgLink}
-                  className="img-fluid me-3"
-                  alt="Profile"
-                />
+                <img src={imgLink} className="img-fluid me-3" alt="Profile" />
               )}
 
               <input
