@@ -10,7 +10,7 @@ function Recipies() {
   const user = useSelector((state) => state.user);
   const fileInputRef = useRef(null);
 
-  const [caption, setCaption] = React.useState(""); //usestate
+  const [caption, setCaption] = React.useState("");
   const [imgLink, setImgLink] = React.useState(""); //set state2
   const [desc, setDesc] = React.useState(""); //setstate3
 
