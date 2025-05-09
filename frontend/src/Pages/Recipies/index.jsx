@@ -87,7 +87,7 @@ function Recipies() {
               <label className="form-label "></label>
 
               <input
-                type="text " // type
+                type="text "
                 style={{ marginTop: "50px", width: "500px" }} // styles
                 className="form-control " // classname
                 placeholder="Please Enter the recipe name " // name
