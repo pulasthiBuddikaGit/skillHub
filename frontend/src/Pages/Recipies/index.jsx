@@ -18,7 +18,7 @@ function Recipies() {
     e.preventDefault();
     const post = {
       userId: user.userId,
-      caption, //caption
+      caption,
       imgLink, //imglinl
       desc, //desc
     };
