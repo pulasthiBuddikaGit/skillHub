@@ -11,7 +11,7 @@ function Recipies() {
   const fileInputRef = useRef(null);
 
   const [caption, setCaption] = React.useState("");
-  const [imgLink, setImgLink] = React.useState(""); //set state2
+  const [imgLink, setImgLink] = React.useState("");
   const [desc, setDesc] = React.useState(""); //setstate3
 
   const handleSubmit = async (e) => {
