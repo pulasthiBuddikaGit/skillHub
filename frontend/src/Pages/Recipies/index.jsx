@@ -45,7 +45,7 @@ function Recipies() {
 
   for (let i = 0; i < numImages; i++) {
     const file = files[i];
-    const storageRef = ref(storage, `/posts /${file.name}`); //storage
+    const storageRef = ref(storage, `/posts /${file.name}`);
 
     const uploadTask = uploadBytesResumable(storageRef, file); //task uplosad
 
