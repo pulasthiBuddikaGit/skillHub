@@ -37,6 +37,7 @@ function NotificationDropdown() {
         role="button"
         data-bs-toggle="dropdown"
         aria-expanded="false"
+        style={{ color: "#33407e" }}
       >
         <Bell />
       </a>

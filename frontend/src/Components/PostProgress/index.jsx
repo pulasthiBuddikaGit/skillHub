@@ -145,7 +145,7 @@ function PostAdd() {
                   width: "150px",
                   height: "150px",
                   objectFit: "cover",
-                  border: "1px solid #0dcaf0",
+                  border: "1px solid #33407e",
                   borderRadius: "0.5rem",
                   backgroundColor: "#ffffff"
                 }}
