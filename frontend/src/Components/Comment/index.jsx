@@ -4,10 +4,7 @@ import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { GiCancel } from "react-icons/gi";
 import { MdDoneOutline } from "react-icons/md";
 import UserImage from "../../assets/user.jpeg";
-import {
-  getPosts,
-  getPostsByUserId,
-} from "../../app/actions/post.actions";
+import { getPosts, getPostsByUserId } from "../../app/actions/post.actions";
 import {
   deleteCommentById,
   updateCommentById,
@@ -19,7 +16,7 @@ function Comment({ postId, comment, postUserId, fetchType }) {
   const user = useSelector((state) => state.user);
   const [text, setText] = React.useState(comment.text);
 
-  const handleSubmitComment = async() => {
+  const handleSubmitComment = async () => {
     const updatedComment = {
       id: comment.id,
       postId: postId,
@@ -37,7 +34,7 @@ function Comment({ postId, comment, postUserId, fetchType }) {
       await dispatch(getPostsByUserId(postUserId));
     }
     setText(text);
-    setCommentEditable(false)
+    setCommentEditable(false);
   };
   return (
     <div className="row mb-2" key={comment.id}>
