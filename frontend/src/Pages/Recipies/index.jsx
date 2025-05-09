@@ -33,7 +33,7 @@ function Recipies() {
   };
 
   const uploadImage = (e) => {
-    const files = e.target.files; // constfile
+    const files = e.target.files;
 
     if (files.length === 0)
       // if condition {
