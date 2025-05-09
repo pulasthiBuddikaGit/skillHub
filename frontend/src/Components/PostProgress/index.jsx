@@ -55,60 +55,145 @@ function PostAdd() {
   };
 
   return (
-    <div className="container mb-3 card create">
-      <div className="card-body">
-        <form onSubmit={handleSubmit}>
-          <h1 className="mt-2">Share Your Learning Progress</h1>
-          <p className="text-muted">
-            Let your peers know how you're growing and what you've achieved!
-          </p>
-
-          <div className="mt-2 mb-3">
-            <label className="form-label fw-semibold">
-              ✍️ What did you learn or accomplish today?
-            </label>
-            <textarea
-              className="form-control"
-              placeholder="write something ..."
-              value={caption}
-              onChange={(e) => setCaption(e.target.value)}
-              rows="4"
-            />
+    <div
+      style={{
+        marginBottom: "1rem", // mb-3
+        padding: "1.5rem", // card-body
+        borderRadius: "0.5rem", // rounded
+        boxShadow: "0 0.5rem 1rem rgba(0, 0, 0, 0.15)", // shadow-lg
+        backgroundColor: "#f9f9fb",
+        border: "1px solid #dee2e6",
+        maxWidth: "600px",
+        margin: "2rem auto",// center and spacing from top
+      }}
+    >
+      <form onSubmit={handleSubmit}>
+        <h1
+          style={{
+            marginTop: "0.5rem", // mt-2
+            marginBottom: "1rem",
+            fontWeight: "700", // fw-bold
+            fontSize: "1.75rem",
+            color: "#000",
+            backgroundColor: "#f9f9fb",
+            padding: "0.5rem",
+            borderRadius: "0.5rem"
+          }}
+        >
+          Share Your Learning Progress
+        </h1>
+        <p
+          style={{
+            color: "#6c757d",
+            marginBottom: "1rem",
+            fontSize: "1rem"
+          }}
+        >
+          Let your peers know how you're growing and what you've achieved!
+        </p>
+  
+        <div style={{ marginTop: "0.75rem", marginBottom: "1rem" }}>
+          <label
+            style={{
+              fontWeight: "600",
+              color: "#212529",
+              display: "block",
+              marginBottom: "0.5rem",
+              fontSize: "1rem"
+            }}
+          >
+            ✍️ What did you learn or accomplish today?
+          </label>
+          <textarea
+            style={{
+              width: "100%",
+              fontSize: "1rem",
+              border: "1px solid #33407e", // border-primary
+              borderRadius: "0.375rem", // .form-control radius
+              padding: "0.75rem",
+              backgroundColor: "#ffffff",
+              color: "#212529",
+              resize: "vertical",
+              lineHeight: "1.5"
+            }}
+            placeholder="Write Something..."
+            value={caption}
+            onChange={(e) => setCaption(e.target.value)}
+            rows="4"
+          />
+        </div>
+  
+        <div style={{ marginBottom: "0.5rem", color: "#6c757d", fontSize: "0.9rem" }}>
+          📸 Upload up to 4 images (optional)
+        </div>
+  
+        {imgLink.length > 0 && (
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "0.5rem",
+              marginBottom: "1rem"
+            }}
+          >
+            {imgLink.map((link, index) => (
+              <img
+                key={index}
+                src={link}
+                alt={`Upload ${index + 1}`}
+                style={{
+                  width: "150px",
+                  height: "150px",
+                  objectFit: "cover",
+                  border: "1px solid #0dcaf0",
+                  borderRadius: "0.5rem",
+                  backgroundColor: "#ffffff"
+                }}
+              />
+            ))}
           </div>
-
-          <i className="text-muted">📸 Upload up to 4 images (optional)</i>
-          <div className="mb-3 mt-2">
-            {imgLink.length > 0 && (
-              <div className="d-flex flex-wrap gap-2">
-                {imgLink.map((link, index) => (
-                  <img
-                    key={index}
-                    src={link}
-                    className="img-thumbnail"
-                    alt={`Upload ${index + 1}`}
-                    style={{ maxWidth: "150px", maxHeight: "150px" }}
-                  />
-                ))}
-              </div>
-            )}
-
-            <input
-              type="file"
-              className="form-control mt-2"
-              onChange={uploadImage}
-              ref={fileInputRef}
-              multiple
-              accept="image/*"
-            />
-          </div>
-
-          <button type="submit" className="btn btn-outline-primary mt-2">
-            🚀 Post Progress
-          </button>
-        </form>
-      </div>
+        )}
+  
+        <input
+          type="file"
+          onChange={uploadImage}
+          ref={fileInputRef}
+          multiple
+          accept="image/*"
+          style={{
+            display: "block",
+            width: "100%",
+            padding: "0.5rem",
+            backgroundColor: "#ffffff",
+            border: "1px solidrgb(255, 255, 255)",
+            borderRadius: "0.375rem",
+            marginBottom: "1rem",
+            fontSize: "1rem"
+          }}
+        />
+  
+        <button
+          type="submit"
+          style={{
+            padding: "0.6rem 1.2rem",
+            backgroundColor: "#33407e", // btn-primary
+            color: "#ffffff",
+            border: "none",
+            borderRadius: "0.375rem", // btn radius
+            fontWeight: "600",
+            cursor: "pointer",
+            fontSize: "1rem",
+            boxShadow: "0 0.5rem 1remrgba(0, 0, 0, 0)"
+          }}
+        >
+          🚀 Post Progress
+        </button>
+      </form>
     </div>
   );
+  
+  
+  
 }
 
 export default PostAdd;

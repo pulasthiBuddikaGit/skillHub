@@ -211,7 +211,7 @@ function PostCard({ post, fetchType }) {
   };
 
   return (
-    <div className="card mb-4 post">
+    <div className="card mb-4 post" style={{ backgroundColor: "#f9f9fb" }}>
       <div className="card-body">
         <div className="row">
           <div className="col-8">
@@ -275,7 +275,7 @@ function PostCard({ post, fetchType }) {
           )}
         </div>
         <hr />
-        <div className="row">
+        <div className="row" >
           {!editable && <p>{post.caption}</p>}
 
           {editable && (
@@ -293,7 +293,7 @@ function PostCard({ post, fetchType }) {
               {imgLinkEdit && imgLinkEdit.length && (
                 <div className="row">
                   {imgLinkEdit.slice(0, 2).map((imgLink, index) => (
-                    <div key={index} className="collage-item">
+                    <div key={index} className="collage-item"style={{ backgroundColor: "#f9f9fb" }}>
                       <img
                         src={imgLink}
                         className="collage-image"
@@ -306,7 +306,7 @@ function PostCard({ post, fetchType }) {
               {imgLinkEdit && imgLinkEdit.length && (
                 <div className="row">
                   {imgLinkEdit.slice(2, 4).map((imgLink, index) => (
-                    <div key={index + 2} className="collage-item">
+                    <div key={index + 2} className="collage-item"style={{ backgroundColor: "#f9f9fb" }}>
                       <img
                         src={imgLink}
                         className="collage-image"
@@ -322,14 +322,14 @@ function PostCard({ post, fetchType }) {
 
 
           {editable && (
-            <input
+            <input 
               type="file"
               className="form-control"
               onChange={(e) => uploadImage(e)}
             />
           )}
         </div>
-        <div className="row text-center container mt-3 mb-3">
+        <div className="row text-center container mt-3 mb-3" style={{ backgroundColor: "#f9f9fb" }}>
           <div className="col-4">
             {isLiked ? (
               <AiFillLike

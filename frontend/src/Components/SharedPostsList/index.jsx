@@ -11,7 +11,7 @@ function SharedPostsList({posts, fetchType}) {
   },[posts]);
 
   return (
-    <div>
+    <div style={{ maxWidth: "600px", width: "100%", marginTop: "1.5rem", backgroundColor: "#f9f9fb", borderRadius: "15px" }}>
       {/* system message will be displayed */}
         {postsList.length ? [...postsList].reverse().map((post) => {
           return <SharedPostCard key={post.id} post={post} fetchType={fetchType}/>;
