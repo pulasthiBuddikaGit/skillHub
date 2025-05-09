@@ -17,7 +17,6 @@ function Recipies() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const post = {
-      // open c
       userId: user.userId, //userID
       caption, //caption
       imgLink, //imglinl
