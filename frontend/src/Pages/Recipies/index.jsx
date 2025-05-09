@@ -101,7 +101,7 @@ function Recipies() {
                 style={{ marginTop: "10px", width: "501px" }}
                 className="form-control "
                 placeholder=" Please Enter the recipe description  "
-                value={desc} // value
+                value={desc}
                 onChange={(e) => setDesc(e.target.value)} //setdesc value
               />
             </div>
