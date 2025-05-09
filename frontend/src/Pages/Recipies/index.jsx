@@ -1,7 +1,7 @@
 import React, { useRef } from "react"; // import
 import { useDispatch, useSelector } from "react-redux"; // import
 import { getPostsByUserId, savePost } from "../../app/actions/post.actions"; // import
-import storage from "../../util/firebaseConfig"; // import
+import storage from "../../util/firebaseConfig";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";// import
 import './recipies.css'; // css
 
