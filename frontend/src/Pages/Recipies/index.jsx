@@ -19,7 +19,7 @@ function Recipies() {
     const post = {
       userId: user.userId,
       caption,
-      imgLink, //imglinl
+      imgLink,
       desc, //desc
     };
 
