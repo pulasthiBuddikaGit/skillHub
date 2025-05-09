@@ -84,9 +84,9 @@ function Navbar() {
                 {/* <Link className="nav-link me-3" to="/meals">
                   Meals
                 </Link> */}
-                <Link className="nav-link me-3" to="/workout">
+                <Link className="nav-link me-3" to="/progress">
                   Progress Posts
-                </Link>
+                </Link> 
                 <NotificationDropdown />
                 <button
                   className="btn btn-outline-danger me-3"

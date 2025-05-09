@@ -10,7 +10,7 @@ function PostAdd() {
   const fileInputRef = useRef(null);
 
   const [caption, setCaption] = React.useState("");
-  const [imgLink, setImgLink] = React.useState("");
+  const [imgLink, setImgLink] = React.useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,34 +22,28 @@ function PostAdd() {
     await dispatch(savePost(post));
     await dispatch(getPostsByUserId(user.userId));
     setCaption("");
-    setImgLink("");
+    setImgLink([]);
     fileInputRef.current.value = "";
-
   };
 
   const uploadImage = (e) => {
     const files = e.target.files;
-
     if (files.length === 0) {
       alert("Please upload at least one image!");
       return;
     }
 
-    // upload up to 4 images
     const maxImages = 4;
     const numImages = Math.min(maxImages, files.length);
 
     for (let i = 0; i < numImages; i++) {
       const file = files[i];
       const storageRef = ref(storage, `/posts/${file.name}`);
-
       const uploadTask = uploadBytesResumable(storageRef, file);
 
       uploadTask.on(
         "state_changed",
-        (snapshot) => {
-          Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-        },
+        () => {},
         (err) => console.log(err),
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((url) => {
@@ -60,44 +54,56 @@ function PostAdd() {
     }
   };
 
-
   return (
-    // Post workout frontend
     <div className="container mb-3 card create">
       <div className="card-body">
         <form onSubmit={handleSubmit}>
-          <h1 className="mt-2">Share your Workouts</h1>
+          <h1 className="mt-2">Share Your Learning Progress</h1>
+          <p className="text-muted">
+            Let your peers know how you're growing and what you've achieved!
+          </p>
+
           <div className="mt-2 mb-3">
-            <label className="form-label"></label>
+            <label className="form-label fw-semibold">
+              ✍️ What did you learn or accomplish today?
+            </label>
             <textarea
               className="form-control"
-              placeholder="What's on your mind?"
+              placeholder="write something ..."
               value={caption}
               onChange={(e) => setCaption(e.target.value)}
+              rows="4"
             />
-
           </div>
-          <i>*maximum 4 images</i>
-          <div className="mb-3">
-            {imgLink && (
-              <img
-                src={imgLink}
-                className="img-fluid me-3"
-                alt="Profile"
-              />
+
+          <i className="text-muted">📸 Upload up to 4 images (optional)</i>
+          <div className="mb-3 mt-2">
+            {imgLink.length > 0 && (
+              <div className="d-flex flex-wrap gap-2">
+                {imgLink.map((link, index) => (
+                  <img
+                    key={index}
+                    src={link}
+                    className="img-thumbnail"
+                    alt={`Upload ${index + 1}`}
+                    style={{ maxWidth: "150px", maxHeight: "150px" }}
+                  />
+                ))}
+              </div>
             )}
 
             <input
               type="file"
-              className="form-control"
-              onChange={(e) => uploadImage(e)}
+              className="form-control mt-2"
+              onChange={uploadImage}
               ref={fileInputRef}
               multiple
+              accept="image/*"
             />
           </div>
 
-          <button type="submit" className="btn btn-outline-primary">
-            PUBLISH
+          <button type="submit" className="btn btn-outline-primary mt-2">
+            🚀 Post Progress
           </button>
         </form>
       </div>
