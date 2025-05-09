@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState  } from "react";
 import Posts from "../../Components/Posts";
 import { useDispatch, useSelector } from "react-redux";
 import { getPostsByUserId } from "../../app/actions/post.actions";
@@ -11,6 +11,8 @@ function User() {
   const dispatch = useDispatch();
   const post = useSelector((state) => state.post);
   const user = useSelector((state) => state.user);
+  const [activeTab, setActiveTab] = useState("posts");
+
 
   useEffect(() => {
     if (user.userId) {
@@ -21,62 +23,76 @@ function User() {
   return (
     <div className="container mt-3 mb-5 row">
       
+      {/* Left Column */}
       <div className="col-md-3">
         <UserProfile />
       </div>
-
-      <div className="col-md-9">
-        <PostAdd />
-        <nav>
-          <div class="nav nav-tabs " id="nav-tab" role="tablist">
+  
+      {/* Center Column */}
+      <div className="col-md-9 d-flex flex-column align-items-center"style={{ maxWidth: "600px", width: "100%" ,left:"100px"}}>
+        {/* PostAdd */}
+        <div style={{ maxWidth: "600px", width: "100%" ,left:"50px"}}>
+          <PostAdd />
+        </div>
+  
+        {/* Custom React Tabs */}
+        <div style={{ maxWidth: "600px", width: "100%", marginTop: "1.5rem" }}>
+          <div style={{ display: "flex", gap: "0.5rem", marginBottom: "0.5rem" }}>
             <button
-              class="nav-link active"
-              id="nav-home-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-home"
-              type="button"
-              role="tab"
-              aria-controls="nav-home"
-              aria-selected="true"
+              onClick={() => setActiveTab("posts")}
+              style={{
+                backgroundColor: activeTab === "posts" ? "#007bff" : "#f8f9fa",
+                color: activeTab === "posts" ? "#fff" : "#000",
+                border: activeTab === "posts" ? "none" : "1px solid #ced4da",
+                padding: "8px 16px",
+                borderRadius: "5px",
+                fontWeight: "600",
+                cursor: "pointer",
+              }}
             >
               POSTS
             </button>
             <button
-              class="nav-link"
-              id="nav-profile-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-profile"
-              type="button"
-              role="tab"
-              aria-controls="nav-profile"
-              aria-selected="false"
+              onClick={() => setActiveTab("shared")}
+              style={{
+                backgroundColor: activeTab === "shared" ? "#007bff" : "#f8f9fa",
+                color: activeTab === "shared" ? "#fff" : "#000",
+                border: activeTab === "shared" ? "none" : "1px solid #ced4da",
+                padding: "8px 16px",
+                borderRadius: "5px",
+                fontWeight: "600",
+                cursor: "pointer",
+              }}
             >
               SHARED POSTS
             </button>
           </div>
-        </nav> 
-        <div class="tab-content" id="nav-tabContent">
+
           <div
-            class="tab-pane fade show active"
-            id="nav-home"
-            role="tabpanel"
-            aria-labelledby="nav-home-tab"
+            style={{
+              padding: "1rem",
+              border: "1px solid #dee2e6",
+              backgroundColor: "#f9f9fb",
+              boxShadow: "0 0.5rem 1rem rgba(0, 0, 0, 0.25)",
+              marginTop: "1rem",
+              borderRadius: "15px",
+            }}
           >
-            <Posts posts={post.posts} fetchType="GET_ALL_USER_POSTS" />
+            {activeTab === "posts" ? (
+              <Posts posts={post.posts} fetchType="GET_ALL_USER_POSTS" />
+            ) : (
+              <SharedPosts />
+            )}
           </div>
-          <div
-            class="tab-pane fade"
-            id="nav-profile"
-            role="tabpanel"
-            aria-labelledby="nav-profile-tab"
-          >
-            <SharedPosts />
-          </div>
-        </div> 
+        </div>
       </div>
-      <div className="col-md-3" style={{ position: "fixed", top: "100px", right: "30px" }}>
+  
+      {/* Right Column */}
+      <div className="col-md-3" style={{ position: "fixed", top: "130px", right: "50px" , border: "1px solid #dee2e6",
+              backgroundColor: "#f8f9fa",
+              boxShadow: "0 0.5rem 1rem rgba(0, 0, 0, 0.25)",borderRadius:"10px"}}>
         <Notifications />
-      </div> 
+      </div>
     </div>
   );
 }
