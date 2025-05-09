@@ -15,7 +15,6 @@ function NotificationDropdown() {
     (state) => state.notification.notifications
   );
 
-  // Inline styles
   const styles = {
     container: { position: "relative", display: "inline-block" },
     dropdownToggle: {
