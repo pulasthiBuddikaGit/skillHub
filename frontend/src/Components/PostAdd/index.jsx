@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPostsByUserId, savePost } from "../../app/actions/post.actions";
-import storage from "../../util/firebaseConfig";
+import storage from "../../firebaseConfig";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 function PostAdd() {
@@ -34,8 +34,6 @@ function PostAdd() {
       alert("Please upload at least one image!");
       return;
     }
-  
-    // upload up to 4 images
     const maxImages = 4;
     const numImages = Math.min(maxImages, files.length);
   
@@ -59,8 +57,7 @@ function PostAdd() {
       );
     }
   };
-  
-  // design post add
+
   return (
     <div className="container mb-3 card create">
       <div className="card-body">

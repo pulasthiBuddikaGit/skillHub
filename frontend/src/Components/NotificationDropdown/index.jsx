@@ -15,6 +15,59 @@ function NotificationDropdown() {
     (state) => state.notification.notifications
   );
 
+  const styles = {
+    container: { position: "relative", display: "inline-block" },
+    dropdownToggle: {
+      background: "none",
+      border: "none",
+      position: "relative",
+    },
+    bellIcon: { fontSize: "1.25rem" },
+    badge: {
+      position: "absolute",
+      top: 0,
+      right: 0,
+      backgroundColor: "#dc3545",
+      color: "white",
+      borderRadius: "50%",
+      minWidth: "18px",
+      height: "18px",
+      fontSize: "0.75rem",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      transform: "translate(50%, -50%)",
+    },
+    notificationItem: {
+      borderBottom: "1px solid rgba(0, 0, 0, 0.05)",
+    },
+    notificationIcon: {
+      marginRight: "0.75rem",
+      color: "#0d6efd",
+    },
+    notificationMessage: {
+      flexGrow: 1,
+      fontSize: "0.875rem",
+      whiteSpace: "normal",
+      wordBreak: "break-word",
+    },
+    removeButton: {
+      cursor: "pointer",
+    },
+    loadingItem: {
+      padding: "0.75rem 1rem",
+      fontSize: "0.875rem",
+      color: "#6c757d",
+      textAlign: "center",
+    },
+    emptyItem: {
+      padding: "0.75rem 1rem",
+      fontSize: "0.875rem",
+      color: "#6c757d",
+      textAlign: "center",
+    },
+  };
+
   useEffect(() => {
     if (userId) {
       dispatch(getNotificationsByUserId(userId));
