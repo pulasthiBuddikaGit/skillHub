@@ -35,7 +35,6 @@ function PostAdd() {
       return;
     }
 
-    // upload up to 4 images
     const maxImages = 4;
     const numImages = Math.min(maxImages, files.length);
 
@@ -94,7 +93,6 @@ function PostAdd() {
               multiple
             />
           </div>
-{/* publish button */}
           <button type="submit" className="btn btn-outline-primary">
             PUBLISH
           </button>
