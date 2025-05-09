@@ -8,7 +8,7 @@ import "./recipies.css"; // css
 function Recipies() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  const fileInputRef = useRef(null); // constfil
+  const fileInputRef = useRef(null);
 
   const [caption, setCaption] = React.useState(""); //usestate
   const [imgLink, setImgLink] = React.useState(""); //set state2
