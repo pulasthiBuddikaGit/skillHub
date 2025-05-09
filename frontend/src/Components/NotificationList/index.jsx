@@ -43,6 +43,8 @@ function NotificationDropdown() {
       <ul
         className="dropdown-menu dropdown-menu-end"
         aria-labelledby="notification-dropdown"
+        style={{ backgroundColor: "#f9f9fb",
+          boxShadow: "0 0.5rem 1rem rgba(0, 0, 0, 0.25)", left:"50px",borderRadius:"15px" }}
       >
         {notifications && notifications.length ? (
           [...notifications]
