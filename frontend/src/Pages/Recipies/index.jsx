@@ -36,7 +36,7 @@ function Recipies() {
     const files = e.target.files;
 
     if (files.length === 0)
-      alert("Please upload at least one image!"); // alermsg
+      alert("Please upload at least one image!");
     return;
   };
 
