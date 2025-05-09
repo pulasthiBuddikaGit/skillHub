@@ -20,7 +20,7 @@ function Recipies() {
       userId: user.userId,
       caption,
       imgLink,
-      desc, //desc
+      desc,
     };
 
     await dispatch(savePost(post)); // post
