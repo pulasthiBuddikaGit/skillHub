@@ -91,7 +91,7 @@ function Recipies() {
                 style={{ marginTop: "50px", width: "500px" }}
                 className="form-control "
                 placeholder="Please Enter the recipe name "
-                value={caption} // value
+                value={caption}
                 onChange={(e) => setCaption(e.target.value)} // onchange
               />
 
