@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../../app/actions/post.actions";
 import NewUsersSuggest from "../../Components/NewUsersSuggest";
 import Notifications from "../../Components/NotificationList/index"
+import ChatBot from "../../Components/ChatBot/ChatBot";
 
 function Home() {
   const dispatch = useDispatch();
@@ -46,6 +47,12 @@ function Home() {
           <Notifications/>
           </div>
         </div>
+        <div className="col-md-3">
+          <div className="sticky-top">
+            {/* Chatbot */}
+            <ChatBot />
+          </div>
+        </div>  
       </div>
     </div>
   );
