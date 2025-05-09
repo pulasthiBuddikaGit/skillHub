@@ -24,7 +24,6 @@ function PostAdd() {
     setCaption("");
     setImgLink("");
     fileInputRef.current.value = "";
-
   };
 
   const uploadImage = (e) => {
@@ -59,7 +58,6 @@ function PostAdd() {
     }
   };
 
-
   return (
     <div className="container mb-3 card create">
       <div className="card-body">
@@ -73,16 +71,11 @@ function PostAdd() {
               value={caption}
               onChange={(e) => setCaption(e.target.value)}
             />
-
           </div>
           <i>*maximum 4 images</i>
           <div className="mb-3">
             {imgLink && (
-              <img
-                src={imgLink}
-                className="img-fluid me-3"
-                alt="Profile"
-              />
+              <img src={imgLink} className="img-fluid me-3" alt="Profile" />
             )}
 
             <input
