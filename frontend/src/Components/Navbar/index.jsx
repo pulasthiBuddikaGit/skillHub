@@ -74,25 +74,25 @@ function Navbar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
             {user.loginStatus ? (
-              <div className="d-flex align-items-center">
-                <Link className="nav-link me-3" to="/">
+              <div className="d-flex align-items-center" >
+                <Link className="nav-link me-3" to="/" style={{ color: "white" }}>
                   Home
                 </Link>
-                <Link className="nav-link me-3" to="/user">
+                <Link className="nav-link me-3" to="/user"style={{ color: "white" }}>
                   Profile
                 </Link>
                 {/* <Link className="nav-link me-3" to="/meals">
                   Meals
                 </Link> */}
-                <Link className="nav-link me-3" to="/progress">
+                <Link className="nav-link me-3" to="/progress"style={{ color: "white" }}>
                   Progress Posts
                 </Link> 
-                <NotificationDropdown />
+                <NotificationDropdown style={{ color: "white" }}/>
                 <button
                   className="btn btn-outline-danger me-3"
                   onClick={() => {
                     dispatch(logout());
-                  }}
+                  }}style={{ color: "white" ,borderColor: "white" }}
                 >
                   Logout
                 </button>
@@ -102,6 +102,7 @@ function Navbar() {
                     openModal();
                   }}
                   className="d-flex align-items-center text-decoration-none"
+                  style={{color: "white"}}
                 >
                   <img
                     src={
