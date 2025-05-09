@@ -25,7 +25,7 @@ function Recipies() {
 
     await dispatch(savePost(post));
     await dispatch(getPostsByUserId(user.userId));
-    setCaption(""); // set caption
+    setCaption("");
 
     setImgLink(""); // set image
     setDesc(""); // set description
