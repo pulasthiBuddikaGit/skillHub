@@ -7,7 +7,7 @@ import "./recipies.css"; // css
 
 function Recipies() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user); // user
+  const user = useSelector((state) => state.user);
   const fileInputRef = useRef(null); // constfil
 
   const [caption, setCaption] = React.useState(""); //usestate
