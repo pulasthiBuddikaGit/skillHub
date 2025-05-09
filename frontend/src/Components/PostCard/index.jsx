@@ -37,7 +37,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-
 Modal.setAppElement("div");
 const customStyles = {
   content: {
@@ -57,7 +56,6 @@ const getUserByIdFunc = (users, userId) => {
 
   return result ? result[0] : null; // or undefined
 };
-
 
 function PostCard({ post, fetchType }) {
   const dispatch = useDispatch();
@@ -318,8 +316,6 @@ function PostCard({ post, fetchType }) {
               )}
             </div>
           </Slider>
-
-
 
           {editable && (
             <input
