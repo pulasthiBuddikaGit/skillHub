@@ -92,7 +92,7 @@ function Recipies() {
                 className="form-control "
                 placeholder="Please Enter the recipe name "
                 value={caption}
-                onChange={(e) => setCaption(e.target.value)} // onchange
+                onChange={(e) => setCaption(e.target.value)}
               />
 
               <br></br>
