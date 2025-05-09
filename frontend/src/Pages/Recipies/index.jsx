@@ -122,7 +122,7 @@ function Recipies() {
                 style={{ width: "500px" }}
                 onChange={(e) => uploadImage(e)}
                 ref={fileInputRef}
-                multiple // multi
+                multiple
               />
             </div>
           </center>
