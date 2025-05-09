@@ -23,7 +23,7 @@ function Recipies() {
       desc,
     };
 
-    await dispatch(savePost(post)); // post
+    await dispatch(savePost(post));
     await dispatch(getPostsByUserId(user.userId)); //id
     setCaption(""); // set caption
 
