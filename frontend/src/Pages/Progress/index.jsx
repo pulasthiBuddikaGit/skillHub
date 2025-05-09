@@ -21,7 +21,7 @@ function User() {
   }, [dispatch, user.userId]);
 
   return (
-    <div className="container mt-3 mb-5 row">
+    <div className="container mt-3 mb-5 row" >
       
       {/* Left Column */}
       <div className="col-md-3">
@@ -41,7 +41,7 @@ function User() {
             <button
               onClick={() => setActiveTab("posts")}
               style={{
-                backgroundColor: activeTab === "posts" ? "#007bff" : "#f8f9fa",
+                backgroundColor: activeTab === "posts" ? "#33407e" : "#f8f9fa",
                 color: activeTab === "posts" ? "#fff" : "#000",
                 border: activeTab === "posts" ? "none" : "1px solid #ced4da",
                 padding: "8px 16px",
@@ -55,7 +55,7 @@ function User() {
             <button
               onClick={() => setActiveTab("shared")}
               style={{
-                backgroundColor: activeTab === "shared" ? "#007bff" : "#f8f9fa",
+                backgroundColor: activeTab === "shared" ? "#33407e" : "#f8f9fa",
                 color: activeTab === "shared" ? "#fff" : "#000",
                 border: activeTab === "shared" ? "none" : "1px solid #ced4da",
                 padding: "8px 16px",
@@ -88,7 +88,7 @@ function User() {
       </div>
   
       {/* Right Column */}
-      <div className="col-md-3" style={{ position: "fixed", top: "130px", right: "50px" , border: "1px solid #dee2e6",
+      <div className="col-md-3" style={{ position: "fixed", top: "150px", right: "50px" , border: "1px solid #dee2e6",
               backgroundColor: "#f8f9fa",
               boxShadow: "0 0.5rem 1rem rgba(0, 0, 0, 0.25)",borderRadius:"10px"}}>
         <Notifications />
