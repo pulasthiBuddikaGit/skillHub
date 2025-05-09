@@ -29,7 +29,7 @@ function Recipies() {
 
     setImgLink("");
     setDesc("");
-    fileInputRef.current.value = ""; // fileinput
+    fileInputRef.current.value = "";
   };
 
   const uploadImage = (e) => {
