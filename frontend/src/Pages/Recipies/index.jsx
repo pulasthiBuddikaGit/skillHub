@@ -96,7 +96,7 @@ function Recipies() {
               />
 
               <br></br>
-              <input // inpt
+              <input
                 type="text"
                 style={{ marginTop: "10px", width: "501px" }} // styles
                 className="form-control " // classname
