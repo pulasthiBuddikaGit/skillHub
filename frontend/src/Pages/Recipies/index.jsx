@@ -15,7 +15,7 @@ function Recipies() {
   const [desc, setDesc] = React.useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // preventdef
+    e.preventDefault();
     const post = {
       // open c
       userId: user.userId, //userID
