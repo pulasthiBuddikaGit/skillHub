@@ -24,7 +24,7 @@ function Recipies() {
     };
 
     await dispatch(savePost(post));
-    await dispatch(getPostsByUserId(user.userId)); //id
+    await dispatch(getPostsByUserId(user.userId));
     setCaption(""); // set caption
 
     setImgLink(""); // set image
