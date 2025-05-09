@@ -41,7 +41,7 @@ function Recipies() {
   };
 
   const maxImages = 4;
-  const numImages = Math.min(maxImages, files.length); // numimgs
+  const numImages = Math.min(maxImages, files.length);
 
   for (let i = 0; i < numImages; i++) {
     const file = files[i];
