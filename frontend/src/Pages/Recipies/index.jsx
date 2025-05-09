@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPostsByUserId, savePost } from "../../app/actions/post.actions";
 import storage from "../../util/firebaseConfig";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import "./recipies.css"; // css
+import "./recipies.css";
 
 function Recipies() {
   const dispatch = useDispatch();
