@@ -17,7 +17,7 @@ function Recipies() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const post = {
-      userId: user.userId, //userID
+      userId: user.userId,
       caption, //caption
       imgLink, //imglinl
       desc, //desc
