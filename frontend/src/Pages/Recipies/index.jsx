@@ -98,7 +98,7 @@ function Recipies() {
               <br></br>
               <input
                 type="text"
-                style={{ marginTop: "10px", width: "501px" }} // styles
+                style={{ marginTop: "10px", width: "501px" }}
                 className="form-control " // classname
                 placeholder=" Please Enter the recipe description  " //placeholder
                 value={desc} // value
