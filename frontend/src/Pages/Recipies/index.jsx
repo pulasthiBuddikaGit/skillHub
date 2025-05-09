@@ -112,7 +112,7 @@ function Recipies() {
                 <img
                   src={imgLink}
                   className="img-fluid me-3"
-                  alt="Profile" // profile
+                  alt="Profile"
                 />
               )}
 
