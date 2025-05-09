@@ -27,7 +27,7 @@ function Recipies() {
     await dispatch(getPostsByUserId(user.userId));
     setCaption("");
 
-    setImgLink(""); // set image
+    setImgLink("");
     setDesc(""); // set description
     fileInputRef.current.value = ""; // fileinput
   };
