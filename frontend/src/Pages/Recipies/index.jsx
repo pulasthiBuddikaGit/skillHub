@@ -54,7 +54,7 @@ function Recipies() {
       (snapshot) => {
         Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
       },
-      (err) => console.log(err), // error
+      (err) => console.log(err),
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
           // getdownurl
