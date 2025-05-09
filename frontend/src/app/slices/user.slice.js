@@ -67,7 +67,7 @@ const userSlice = createSlice({
             toast.error("Something went wrong");
         });
         builder.addCase(updateUserById.fulfilled, (state, action) => {
-            state.user = action.payload; // Update the user object directl            
+            state.user = action.payload; // Update the user object directly            
             toast.success("User Profile Updated");
         });
         builder.addCase(updateUserById.rejected, (state, action) => {
