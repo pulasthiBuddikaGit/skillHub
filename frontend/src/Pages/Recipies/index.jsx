@@ -12,7 +12,7 @@ function Recipies() {
 
   const [caption, setCaption] = React.useState("");
   const [imgLink, setImgLink] = React.useState("");
-  const [desc, setDesc] = React.useState(""); //setstate3
+  const [desc, setDesc] = React.useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // preventdef
