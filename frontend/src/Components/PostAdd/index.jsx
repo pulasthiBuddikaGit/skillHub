@@ -76,7 +76,7 @@ function PostAdd() {
               onChange={(e) => setCaption(e.target.value)}
             />
           </div>
-            <i>*maximum 4 images</i>
+            <i>*maximum 4 post</i>
           <div className="mb-3">
             {imgLink && (
               <img
@@ -92,11 +92,12 @@ function PostAdd() {
               onChange={(e) => uploadImage(e)}
               ref={fileInputRef}
               multiple 
+              accept="image/*,video/*"
             />
           </div>
 
           <button type="submit" className="btn btn-outline-primary">
-            PUBLISH
+            UPLOAD
           </button>
         </form>
       </div>
