@@ -30,7 +30,7 @@ function NotificationDropdown() {
   };
   return (
     <>
-      <a
+      {/* <a
         className="nav-link dropdown-toggle"
         href="#"
         id="notification-dropdown"
@@ -40,7 +40,7 @@ function NotificationDropdown() {
         style={{ color: "#33407e" }}
       >
         <Bell />
-      </a>
+      </a> */}
       <ul
         className="dropdown-menu dropdown-menu-end"
         aria-labelledby="notification-dropdown"
