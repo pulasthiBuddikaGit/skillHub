@@ -1,19 +1,17 @@
-package com.paf.socialmedia.dto;
+package com.paf.socialmedia.dto.progress;
 
 import lombok.Data;
+
 import java.util.Date;
-import java.util.List;
 
 @Data
-public class ProgressDTO {
+public class ProgressCommentDTO {
     private String id;
+    private String text;
     private String userId;
     private String username;
     private String profileImage;
-    private List<String> imgLink;
-    private String caption;
+    private String progressId;
     private Date createdAt;
     private Date updatedAt;
-    private List<String> likedby;
-    private List<CommentDTO> comments;
 }

@@ -5,8 +5,6 @@ import { deleteUserById } from "../../app/actions/user.actions";
 import storage from "../../firebaseConfig";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
-
-//profile function
 function Profile(props) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
@@ -14,11 +12,13 @@ function Profile(props) {
   // State for success message
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-  const [username, setUsername] = useState(user?.user?.username);// Disable to update username
+  const [username, setUsername] = useState(user?.user?.username);
   const [email, setEmail] = useState(user?.user?.email);
   const [contactNumber, setContactNumber] = useState(user?.user?.contactNumber);
   const [country, setCountry] = useState(user?.user?.country);
   const [profileImage, setProfileImage] = useState(user?.user?.profileImage ? user.user.profileImage : null);
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
 
   useEffect(() => {
     dispatch(getUser(user.userId));
@@ -48,162 +48,260 @@ function Profile(props) {
   const handleDelete = () => {
     if (window.confirm("Are you sure you want to delete your account?")) {
       dispatch(deleteUserById(user.userId));
-      
       props.closeModal();
     }
   };
   
-
   const uploadImage = (e) => {
     const file = e.target.files[0];
 
     if (!file) {
       alert("Please upload an image first!");
+      return;
     }
 
+    setIsUploading(true);
+    setUploadProgress(0);
     const storageRef = ref(storage, `/users/${file.name}`);
-
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        setUploadProgress(progress);
       },
-      (err) => console.log(err),
+      (err) => {
+        console.log(err);
+        setIsUploading(false);
+      },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
           setProfileImage(url);
+          setIsUploading(false);
         });
       }
     );
   };
 
+  // Photography theme styles
+  const photoThemeStyles = {
+    container: {
+      maxWidth: "450px",
+      margin: "0 auto"
+    },
+    header: {
+      backgroundImage: "linear-gradient(to right, #2c3e50, #4b6cb7)",
+      borderBottom: "none"
+    },
+    profileImageWrapper: {
+      boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
+      border: "3px solid #fff"
+    },
+    cameraButton: {
+      backgroundColor: "#2c3e50",
+      borderColor: "#2c3e50"
+    },
+    formContainer: {
+      backgroundColor: "#f8f9fa"
+    }
+  };
 
   return (
-    // Background image come from google
-    <div style={{ backgroundImage: `url('https://wallpaperset.com/w/full/a/3/d/45475.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: "10px", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)" }}> 
-      
-      <h1 className="text-center" style={{ fontFamily:"cursive", color:"white"}}>Update Profile</h1>
-      <hr style={{color:"white"}}/>
-      <center>
-        <div style={{height:"250px", width:"250px"}}></div>
-      </center>
-      <div className="container">
-        <div className="row mt-5">
-          <div className="col-md-6 offset-md-3">
-            <form onSubmit={handleSubmit}>
-              <div className="mb-3">
-                <label style={{color:"white"}} htmlFor="username" className="form-label">
-                  Username
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="username"
-                  placeholder="Enter your username"
-                  value={username}
-                  readOnly
+    <div className="container-fluid px-0" style={photoThemeStyles.container}>
+      <div className="card border-0 shadow">
+        {/* Header with photography theme */}
+        <div 
+          className="card-header text-white d-flex justify-content-between align-items-center p-3" 
+          style={photoThemeStyles.header}
+        >
+          <div className="d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" className="bi bi-camera me-2" viewBox="0 0 16 16">
+              <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2.002 2.002 0 0 0 2 2h12a2.002 2.002 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
+              <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+            </svg>
+            <h5 className="mb-0 fw-bold">Profile</h5>
+          </div>
+          <button 
+            type="button" 
+            className="btn-close btn-close-white" 
+            onClick={() => props.closeModal()}
+            aria-label="Close"
+          ></button>
+        </div>
+        
+        {/* Profile Image */}
+        <div className="text-center position-relative mt-3 mb-1">
+          <div className="position-relative d-inline-block">
+            <div 
+              className="rounded-circle bg-white shadow-sm" 
+              style={{...photoThemeStyles.profileImageWrapper, width: "110px", height: "110px", overflow: "hidden" }}
+            >
+              {profileImage ? (
+                <img 
+                  src={profileImage} 
+                  alt="Profile" 
+                  className="rounded-circle img-fluid h-100 w-100"
+                  style={{ objectFit: "cover" }} 
                 />
-              </div>
-              <div className="mb-3">
-                <label style={{color:"white"}} htmlFor="contactNumber" className="form-label">
-                  Contact Number
-                </label>
+              ) : (
+                <div className="d-flex justify-content-center align-items-center h-100 bg-light">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="bi bi-person text-secondary" viewBox="0 0 16 16">
+                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                  </svg>
+                </div>
+              )}
+            </div>
+            
+            <label 
+              htmlFor="profileImageUpload" 
+              className="btn btn-sm rounded-circle position-absolute bottom-0 end-0 shadow-sm"
+              style={{ ...photoThemeStyles.cameraButton, cursor: "pointer", width: "32px", height: "32px", padding: "0", display: "flex", alignItems: "center", justifyContent: "center" }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="white" className="bi bi-camera" viewBox="0 0 16 16">
+                <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2.002 2.002 0 0 0 2 2h12a2.002 2.002 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
+                <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+              </svg>
+              <input 
+                id="profileImageUpload" 
+                type="file" 
+                className="d-none" 
+                onChange={uploadImage}
+                accept="image/*"
+              />
+            </label>
+          </div>
+          
+          {profileImage && (
+            <div className="mt-2">
+              <button 
+                type="button"
+                onClick={() => setProfileImage("https://i.discogs.com/57iTb7iRduipsfyksYodpaSpz_eEjtg52zPBhCwBPhI/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTY5Nzg2/ODEtMTU0OTgxMTIz/OC02NjMxLmpwZWc.jpeg")} 
+                className="btn btn-link btn-sm text-danger p-0"
+                style={{ fontSize: "0.85rem" }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" className="bi bi-trash3 me-1" viewBox="0 0 16 16">
+                  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                </svg>
+                Reset Photo
+              </button>
+            </div>
+          )}
+        </div>
+        
+        {/* Upload Progress */}
+        {isUploading && (
+          <div className="px-4 mt-2">
+            <div className="progress" style={{ height: "5px" }}>
+              <div 
+                className="progress-bar progress-bar-striped progress-bar-animated" 
+                role="progressbar" 
+                style={{ width: `${uploadProgress}%`, backgroundColor: "#4b6cb7" }} 
+                aria-valuenow={uploadProgress} 
+                aria-valuemin="0" 
+                aria-valuemax="100"
+              ></div>
+            </div>
+            <p className="text-center text-muted small mt-1" style={{ fontSize: "0.75rem" }}>Uploading... {uploadProgress}%</p>
+          </div>
+        )}
+        
+        {/* Form */}
+        <div className="card-body p-3" style={photoThemeStyles.formContainer}>
+          <form className="compact-form">
+            <div className="mb-3">
+              <label htmlFor="username" className="form-label small fw-bold text-muted mb-1">Username</label>
+              <input
+                type="text"
+                className="form-control form-control-sm bg-light"
+                id="username"
+                value={username}
+                readOnly
+              />
+            </div>
+            
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label small fw-bold text-muted mb-1">Email Address</label>
+              <input
+                type="email"
+                className="form-control form-control-sm"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              />
+            </div>
+            
+            <div className="row g-2 mb-3">
+              <div className="col-6">
+                <label htmlFor="contactNumber" className="form-label small fw-bold text-muted mb-1">Contact Number</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control form-control-sm"
                   id="contactNumber"
-                  placeholder="Enter your contact number"
                   value={contactNumber}
-                  onChange={(e) => {
-                    setContactNumber(e.target.value);
-                  }}
+                  onChange={(e) => setContactNumber(e.target.value)}
                   pattern="[0-9]{10}"
                 />
               </div>
-              <div className="mb-3">
-                <label style={{color:"white"}} htmlFor="email" className="form-label">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                />
-              </div>
-              <div className="mb-3">
-                <label style={{color:"white"}} htmlFor="country" className="form-label">
-                  Country
-                </label>
+              
+              <div className="col-6">
+                <label htmlFor="country" className="form-label small fw-bold text-muted mb-1">Country</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control form-control-sm"
                   id="country"
-                  placeholder="Enter your country"
                   value={country}
-                  onChange={(e) => {
-                    setCountry(e.target.value);
-                  }}
+                  onChange={(e) => setCountry(e.target.value)}
                 />
               </div>
-              <div className="mb-3">
-                {profileImage && (
-                  <img
-                    src={profileImage}
-                    className="img-fluid me-3"
-                    alt="Profile"
-                  />
-                )}
-                <label style={{color:"white"}} htmlFor="country" className="form-label">
-                  Profile Image
-                </label>
-                <input
-                  type="file"
-                  className="form-control"
-                  id="country"
-                  placeholder="Enter your country"
-                  onChange={(e) => {
-                    uploadImage(e);
-                  }}
-                />
-                <button className="btn btn-danger w-100 mb-3" onClick={()=>{
-                  setProfileImage("https://i.discogs.com/57iTb7iRduipsfyksYodpaSpz_eEjtg52zPBhCwBPhI/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTY5Nzg2/ODEtMTU0OTgxMTIz/OC02NjMxLmpwZWc.jpeg")}}>Remove Profile picture</button>
-              </div>
-              <button
-                className="btn btn-outline-primary w-100 mb-3"
-                onClick={() => {
-                  props.closeModal();
-                }}
-              >
-              CANCEL
-              </button>
-              <button
-                type="submit"
-                className="btn btn-outline-success w-100 mb-3">Update</button>
-
-              <button className="btn btn-outline-danger w-100 mb-3" onClick={() => handleDelete()}>
-                Delete
-              </button>
-            </form>
+            </div>
+            
+            {/* Success Message */}
             {showSuccessMessage && (
-              <div className="alert alert-success" role="alert">
-                Profile updated successfully!!
+              <div className="alert alert-success py-2 px-3 d-flex align-items-center small" role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-check-circle-fill flex-shrink-0 me-2" viewBox="0 0 16 16">
+                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </svg>
+                <div>Profile updated successfully!</div>
               </div>
             )}
-          </div>
+            
+            {/* Action Buttons */}
+            <div className="d-flex gap-2 mt-3">
+              <button
+                type="button"
+                onClick={handleSubmit}
+                className="btn btn-sm flex-grow-1"
+                style={{ backgroundColor: "#4b6cb7", color: "white" }}
+              >
+                Save
+              </button>
+              
+              <button
+                type="button"
+                onClick={() => props.closeModal()}
+                className="btn btn-sm btn-light flex-grow-1"
+              >
+                Cancel
+              </button>
+            </div>
+            
+            <div className="mt-2 text-center">
+              <button
+                type="button"
+                onClick={handleDelete}
+                className="btn btn-link btn-sm text-danger p-0"
+                style={{ fontSize: "0.85rem" }}
+              >
+                Delete Account
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-    
   );
 }
-
 
 export default Profile;

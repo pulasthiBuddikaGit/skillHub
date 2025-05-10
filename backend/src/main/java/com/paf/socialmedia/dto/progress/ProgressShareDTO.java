@@ -1,10 +1,10 @@
-package com.paf.socialmedia.dto;
+package com.paf.socialmedia.dto.progress;
 
 import lombok.Data;
-import java.util.Date;
 
+import java.util.Date;
 @Data
-public class SharedProgressDTO {
+public class ProgressShareDTO {
     private String id;
     private String caption;
     private String userId;

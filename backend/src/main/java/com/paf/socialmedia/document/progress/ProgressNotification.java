@@ -1,27 +1,23 @@
-package com.paf.socialmedia.document;
+package com.paf.socialmedia.document.progress;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
-import java.util.List;
 
-@Setter
-@Getter
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-@Document(collection = "progress_posts")
-public class ProgressPost {
+@AllArgsConstructor
+@Document(collection = "progress_notifications")
+public class ProgressNotification {
     @Id
     private String id;
+    private String message;
+    private Boolean isRead;
     private String userId;
-    private List<String> imgLink;
-    private String caption;
-    private List<String> likedby;
     private Date createdAt;
     private Date updatedAt;
 }

@@ -10,7 +10,7 @@ import User from "./Pages/User";
 import SharedPosts from "./Pages/SharedPosts";
 import Profile from "./Pages/Profile";
 import UserPosts from "./Pages/UserPosts"; // post
-import Meals from "../src/Pages/Workouts/"; // meal
+import Progress from "./Pages/Progress"; // progress
 
 function App() {
     return (
@@ -26,7 +26,7 @@ function App() {
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<Register />} />
                         <Route path="/profile" element={<Profile />} />  {/*update profile*/}
-                        {/* <Route path="/workout" element={<Meals />} /> */}
+                        <Route path="/progress" element={<Progress />} /> {/* progress*/}
                     </Routes>
                 </div>
             </Router>

@@ -1,7 +1,8 @@
-package com.paf.socialmedia.repository;
+package com.paf.socialmedia.repository.progress;
 
-import com.paf.socialmedia.document.ProgressShare;
 import org.springframework.data.mongodb.repository.MongoRepository;
+
+import com.paf.socialmedia.document.progress.ProgressShare;
 
 import java.util.List;
 

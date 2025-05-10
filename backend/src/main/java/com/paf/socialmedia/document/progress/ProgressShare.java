@@ -1,4 +1,4 @@
-package com.paf.socialmedia.document;
+package com.paf.socialmedia.document.progress;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,14 +12,14 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "progressshare")
+@Document(collection = "progress_share")
 public class ProgressShare {
     @Id
     private String id;
     private String caption;
     private String userId;
     @DBRef
-    private ProgressPost progressPost;
+    private Progress progress;
     private Date createdAt;
     private Date updatedAt;
 }
