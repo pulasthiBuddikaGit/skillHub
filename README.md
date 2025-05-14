@@ -7,11 +7,10 @@ SkillHub is a modern, community-driven skill-sharing and learning platform desig
 ## 🚀 Features
 
 - 🔐 Token based Authentication (Access & Refresh Tokens)
-- 🧑‍🏫 User Profiles with skills and bio
-- 📸 Skill Posts (CRUD) with media, captions, likes & comments
+- 🧑‍🏫 User Profiles with info
+- 📸 Upload and Share Skill Posts (CRUD) with media, captions, likes, comments & notifications
+- 🤖 AI Powered Learning Assistant Chatbot
 - 🗓️ Learning Plans & Progress Tracking
-- 💬 Q&A Forum (Stack Overflow-style)
-- 🔍 Explore page with filtering/search
 - ☁️ Firebase integration for media & user management
 - 📡 RESTful API endpoints using Spring Boot & MongoDB
 - 💻 Responsive UI/UX with React.js
@@ -22,7 +21,7 @@ SkillHub is a modern, community-driven skill-sharing and learning platform desig
 
 | Layer        | Technology                      |
 |--------------|---------------------------------|
-| Frontend     | React.js, CSS, Firebase|
+| Frontend     | React.js, CSS, Firebase, OpenAI API|
 | Backend      | Spring Boot (Java), MongoDB     |
 | Auth         | JWT (Access/Refresh) |
 | Version Ctrl | Git, GitHub                     |
